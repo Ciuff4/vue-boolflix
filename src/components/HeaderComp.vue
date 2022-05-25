@@ -32,6 +32,7 @@ header{
     align-items: center;
     justify-content: space-between;
     height: 90px;
+    background-image: linear-gradient(black, #434343);
     .cg-btn{
         margin:0 10px;
     }

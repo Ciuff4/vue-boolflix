@@ -2,10 +2,10 @@
   <div class="col cg-col">
     <div class="card cg-card">
       <ul>
-          <li>Titolo: {{film.title}}</li>
-          <li>Titolo originale: {{film.original_title}}</li>
-          <li>Lingua originale: {{film.original_language}} <span class="fi fis" :class="`fi-${film.original_language}`"></span> </li>
-          <li>Voto: {{film.vote_average}}</li>
+          <li>Titolo: {{item.title || item.name}}</li>
+          <li>Titolo originale: {{item.original_title || item.original_name }}</li>
+          <li>Lingua originale: {{item.original_language}} <span class="fi fis" :class=" [ item.original_language=== 'en'? 'fi-gb':'' , `fi-${item.original_language}`]"></span> </li>
+          <li>Voto: {{item.vote_average}}</li>
       </ul>
     </div>
   </div>
@@ -16,8 +16,8 @@
 export default {
 name:'MovieComp',
 props:{
-    film:Object
-}
+    item:Object
+},
 }
 </script>
 

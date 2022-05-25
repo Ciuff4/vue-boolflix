@@ -1,8 +1,8 @@
 <template>
   <main class="container">
     <div class="row row-cols-5 ">
-      <MovieComp v-for ="( film , index ) in films" :key="`films${index}`"
-      :film="film"/>
+      <MovieComp v-for ="( item , index ) in items" :key="`items${index}`"
+      :item="item"/>
     </div>
   </main>
 </template>
@@ -18,7 +18,7 @@ components:{MovieComp},
 
 props:{
   //textToSearch:String,
-  films:Array
+  items:Array
 },
 
 
@@ -27,6 +27,9 @@ props:{
 </script>
 
 <style lang="scss" scoped >
+main{
+  background-color: #434343;
+}
 .cg-row{
   flex-wrap: wrap;
 }

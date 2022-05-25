@@ -2,9 +2,14 @@
   <div id="app">
     <HeaderComp
       @findName='findName'/>
-    <MainComp
-    
-    :films="films"/>
+    <div>
+      <h2>Films</h2>
+      <MainComp
+      :items="films"/>
+      <h2>Serie TV</h2>
+      <MainComp
+      :items="series"/>
+    </div>
   </div>
 </template>
 
@@ -19,13 +24,15 @@ export default {
     data(){
       return{
         textToSearch:'',
-        apiUrl:'https://api.themoviedb.org/3/search/movie',
+        apiUrlFilms:'https://api.themoviedb.org/3/search/movie',
+        apiUrlSeries:'https://api.themoviedb.org/3/search/tv',
         paramsApiUrl:{
         api_key:'947acf8b00e4dea879763af34a10e35c',
         language:'it_IT',
         query:''
         },
-        films:[]
+        films:[],
+        series:[]
       }
     },
     methods:{
@@ -34,8 +41,8 @@ export default {
         this.showResults()
         console.log(textToSearch);
       },
-      getApiUrl(){
-      axios.get(this.apiUrl,{
+      getApiUrlFilm(){
+      axios.get(this.apiUrlFilms,{
         params:this.paramsApiUrl
       })
       .then(r=>{
@@ -46,9 +53,22 @@ export default {
         console.log(e);
       })
       },
+      getApiUrlSeries(){
+      axios.get(this.apiUrlSeries,{
+        params:this.paramsApiUrl
+      })
+      .then(rs=>{
+        this.series=rs.data.results
+        console.log('series',this.series);
+      })
+      .catch(e=>{
+        console.log(e);
+      })
+      },
       showResults(){
         this.paramsApiUrl.query=this.textToSearch;
-        this.getApiUrl();
+        this.getApiUrlFilm();
+        this.getApiUrlSeries();
       }
     },
     mounted(){
@@ -61,6 +81,6 @@ export default {
 <style lang="scss">
 @import './assets/scss/general';
 @import './assets/scss/utils';
-@import './assets/scss/vars'
+@import './assets/scss/vars';
 
 </style>
