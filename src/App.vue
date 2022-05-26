@@ -9,6 +9,7 @@
       <h2>Serie TV</h2>
       <MainComp
       :items="series"/>
+
     </div>
   </div>
 </template>
@@ -20,7 +21,7 @@ import axios from "axios";
 
 export default {
     name: "App",
-    components: { HeaderComp, MainComp },
+    components: { HeaderComp, MainComp},
     data(){
       return{
         textToSearch:'',
@@ -82,5 +83,11 @@ export default {
 @import './assets/scss/general';
 @import './assets/scss/utils';
 @import './assets/scss/vars';
-
+#app{
+  background-image: linear-gradient(black, #434343);
+  min-height: 100vh;
+  h2{
+    color: white;
+  }
+}
 </style>

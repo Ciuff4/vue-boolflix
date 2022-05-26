@@ -27,9 +27,6 @@ props:{
 </script>
 
 <style lang="scss" scoped >
-main{
-  background-color: #434343;
-}
 .cg-row{
   flex-wrap: wrap;
 }
